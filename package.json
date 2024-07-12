@@ -2,7 +2,9 @@
   "name": "taxee.js",
   "version": "1.0.0",
   "description": "Helper that lets you not have to pass DB transactions to every function.",
-  "private": "true",
+  "publishConfig": {
+    "access": "restricted"
+  },
   "scripts": {},
   "author": "Yuki Takagi <takagiy.4dev@gmail.com> (https://github.com/takagiy)",
   "license": "MIT",
