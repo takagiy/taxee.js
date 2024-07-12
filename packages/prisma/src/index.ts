@@ -1,9 +1,7 @@
 import * as Taxee from "taxee";
 
 type BasePrismaClient = {
-  $transaction: <R>(
-    callback: (tx: unknown) => Promise<R>
-  ) => Promise<R>;
+  $transaction: <R>(callback: (tx: unknown) => Promise<R>) => Promise<R>;
 };
 
 type Transaction<PrismaClient extends BasePrismaClient> = Parameters<
@@ -11,15 +9,11 @@ type Transaction<PrismaClient extends BasePrismaClient> = Parameters<
 >[0];
 
 export class TransactionManager<
-  PrismaClient extends BasePrismaClient
+  PrismaClient extends BasePrismaClient,
 > extends Taxee.TransactionManager<PrismaClient, Transaction<PrismaClient>> {
-  constructor(prisma: PrismaClient) {
-    super(prisma);
-  }
-
   override async beginTransaction<R>(callback: () => Promise<R>): Promise<R> {
     return this._client.$transaction(async (tx) => {
-      return this._transaction.run(tx, callback)
+      return this._transaction.run(tx, callback);
     });
   }
 }

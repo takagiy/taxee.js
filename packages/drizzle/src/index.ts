@@ -4,7 +4,7 @@ type BaseDrizzleClient = {
   transaction: <R>(
     callback: (tx: {
       rollback: () => Promise<void>;
-    }) => Promise<R>
+    }) => Promise<R>,
   ) => Promise<R>;
 };
 
@@ -13,15 +13,11 @@ type Transaction<DrizzleClient extends BaseDrizzleClient> = Parameters<
 >[0];
 
 export class TransactionManager<
-  DrizzleClient extends BaseDrizzleClient
+  DrizzleClient extends BaseDrizzleClient,
 > extends Taxee.TransactionManager<DrizzleClient, Transaction<DrizzleClient>> {
-  constructor(prisma: DrizzleClient) {
-    super(prisma);
-  }
-
   override async beginTransaction<R>(callback: () => Promise<R>): Promise<R> {
     return this._client.transaction(async (tx) => {
-      return this._transaction.run(tx, callback)
+      return this._transaction.run(tx, callback);
     });
   }
 
