@@ -1,5 +1,5 @@
 {
-  "name": "taxee.js",
+  "name": "@taxee/taxee.js",
   "version": "1.0.0",
   "description": "Helper that lets you not have to pass DB transactions to every function.",
   "publishConfig": {
