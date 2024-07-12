@@ -17,9 +17,9 @@ importers:
 
   packages/drizzle:
     dependencies:
-      taxee:
+      tee-ex:
         specifier: workspace:*
-        version: link:../taxee
+        version: link:../tee-ex
     devDependencies:
       '@biomejs/biome':
         specifier: ^1.8.3
@@ -45,9 +45,9 @@ importers:
 
   packages/prisma:
     dependencies:
-      taxee:
+      tee-ex:
         specifier: workspace:*
-        version: link:../taxee
+        version: link:../tee-ex
     devDependencies:
       '@biomejs/biome':
         specifier: ^1.8.3
@@ -71,7 +71,7 @@ importers:
         specifier: ^5.5.2
         version: 5.5.3
 
-  packages/taxee:
+  packages/tee-ex:
     devDependencies:
       '@biomejs/biome':
         specifier: ^1.8.3

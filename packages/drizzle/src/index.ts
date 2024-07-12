@@ -1,4 +1,4 @@
-import * as Taxee from "taxee";
+import * as TeeEx from "tee-ex";
 
 type BaseDrizzleClient = {
   transaction: <R>(
@@ -14,7 +14,7 @@ type Transaction<DrizzleClient extends BaseDrizzleClient> = Parameters<
 
 export class TransactionManager<
   DrizzleClient extends BaseDrizzleClient,
-> extends Taxee.TransactionManager<DrizzleClient, Transaction<DrizzleClient>> {
+> extends TeeEx.TransactionManager<DrizzleClient, Transaction<DrizzleClient>> {
   override async beginTransaction<R>(callback: () => Promise<R>): Promise<R> {
     return this._client.transaction(async (tx) => {
       return this._transaction.run(tx, callback);
